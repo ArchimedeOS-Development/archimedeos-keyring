@@ -1,0 +1,14 @@
+post_install() {
+    if [ -x /usr/bin/pacman-key ]; then
+        echo "==> Ajout de la clé ArchimedeOS à pacman-key..."
+        /usr/bin/pacman-key --add /usr/share/pacman/keyrings/archimedeos.gpg
+        /usr/bin/pacman-key --lsign-key 984702CFCD8EBBC5F4C0A7B200D365D753B27ED7
+    else
+        echo ">>> pacman-key est introuvable. Veuillez l’installer ou initialiser le keyring avec :"
+        echo "    sudo pacman-key --init && sudo pacman-key --add /usr/share/pacman/keyrings/archimedeos.gpg"
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
