@@ -3,7 +3,7 @@
 
 pkgname=archimedeos-keyring
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Clés GPG pour la vérification des paquets ArchimedeOS"
 arch=('any')
 url="https://github.com/ArchimedeOS-Development/archimedeos-keyring"

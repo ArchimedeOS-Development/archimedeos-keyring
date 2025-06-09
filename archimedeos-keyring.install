@@ -1,14 +1,14 @@
-post_install() {
-    if [ -x /usr/bin/pacman-key ]; then
-        echo "==> Ajout de la clé ArchimedeOS à pacman-key..."
-        /usr/bin/pacman-key --add /usr/share/pacman/keyrings/archimedeos.gpg
-        /usr/bin/pacman-key --trust /usr/share/pacman/keyrings/archimedeos-trusted
+post_upgrade() {
+    if /usr/bin/pacman-key --list-keys >/dev/null 2>&1; then
+        /usr/bin/pacman-key --populate archimedeos
     else
-        echo ">>> pacman-key est introuvable. Veuillez initialiser le keyring avec :"
-        echo "    sudo pacman-key --init && sudo pacman-key --add /usr/share/pacman/keyrings/archimedeos.gpg"
+        echo ">>> Run 'pacman-key --init' to set up your pacman keyring."
+        echo ">>> Then run 'pacman-key --populate archimedeos' to install the ArchimedeOS keyring."
     fi
 }
 
-post_upgrade() {
-    post_install
+post_install() {
+    if [ -x /usr/bin/pacman-key ]; then
+        post_upgrade
+    fi
 }
