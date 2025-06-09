@@ -3,7 +3,7 @@
 
 pkgname=archimedeos-keyring
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Clés GPG pour la vérification des paquets ArchimedeOS"
 arch=('any')
 url="https://github.com/ArchimedeOS-Development/archimedeos-keyring"
@@ -11,14 +11,21 @@ license=('GPL3')
 depends=('pacman')
 provides=('archimedeos-keyring')
 install=${pkgname}.install
-source=('archimedeos.gpg')
-sha256sums=('c6aa314396784dd97f54afc47c11016f309c66ebe55b78b31693ba55bff4f326')
-
+source=(
+  'archimedeos.gpg'
+  'archimedeos-trusted'
+  'archimedeos-revoked'
+)
+sha256sums=(
+  'c6aa314396784dd97f54afc47c11016f309c66ebe55b78b31693ba55bff4f326'
+  'SKIP'
+  'SKIP'
+)
 package() {
-    # Installation de la clé GPG
     install -Dm644 archimedeos.gpg "$pkgdir/usr/share/pacman/keyrings/archimedeos.gpg"
-    
-    # Création du répertoire de documentation
+    install -Dm644 archimedeos-trusted "$pkgdir/usr/share/pacman/keyrings/archimedeos-trusted"
+    install -Dm644 archimedeos-revoked "$pkgdir/usr/share/pacman/keyrings/archimedeos-revoked"
+
     install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
     
     # Installation de la documentation
