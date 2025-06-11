@@ -23,15 +23,13 @@ install:
 	
 	# Installation de la documentation
 	install -dm755 "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring"
-	cat > "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README" << EOF
-ArchimedeOS Keyring
-==================
-
-Ce paquet contient les clés GPG utilisées pour vérifier
-l'authenticité des paquets ArchimedeOS.
-
-Pour plus d'informations, visitez : https://archimedeos.org
-EOF
+	echo "ArchimedeOS Keyring" > "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "==================" >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "" >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "Ce paquet contient les clés GPG utilisées pour vérifier" >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "l'authenticité des paquets ArchimedeOS." >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "" >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
+	echo "Pour plus d'informations, visitez : https://archimedeos.org" >> "$(DESTDIR)$(PREFIX)/share/doc/archimedeos-keyring/README"
 
 clean:
 	rm -f archimedeos.gpg archimedeos-trusted archimedeos-revoked
