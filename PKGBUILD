@@ -3,7 +3,7 @@
 
 pkgname=archimedeos-keyring
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Clés GPG pour la vérification des paquets ArchimedeOS"
 arch=('any')
 url="https://github.com/ArchimedeOS-Development/archimedeos-keyring"
@@ -29,7 +29,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
     
     # Installation de la documentation
-    echo "ArchimedeOS Keyring v${pkgver}" > "${pkgdir}/usr/share/doc/${pkgname}/README"
+    echo "ArchimedeOS Keyring v${pkgver}-${pkgrel}" > "${pkgdir}/usr/share/doc/${pkgname}/README"
     echo "===========================" >> "${pkgdir}/usr/share/doc/${pkgname}/README"
     echo "" >> "${pkgdir}/usr/share/doc/${pkgname}/README"
     echo "Ce paquet contient les clés GPG utilisées pour vérifier" >> "${pkgdir}/usr/share/doc/${pkgname}/README"
