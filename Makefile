@@ -11,7 +11,7 @@ archimedeos.gpg:
 	gpg --export 6C250CE3FE1635D3A3346BDD7F068AC1F1E5B246 > archimedeos.gpg
 
 archimedeos-trusted:
-	echo "6C250CE3FE1635D3A3346BDD7F068AC1F1E5B246:4:" > archimedeos-trusted
+	echo "6C250CE3FE1635D3A3346BDD7F068AC1F1E5B246:6:" > archimedeos-trusted
 
 archimedeos-revoked:
 	touch archimedeos-revoked
